@@ -1,0 +1,24 @@
+{
+  "name": "channelcorp-os",
+  "version": "1.0.0",
+  "description": "ChannelCorp OS — Autonomous Multi-Agent Media Agency & Content Production Pipeline (Node.js + SQLite WAL)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "keywords": [
+    "multi-agent",
+    "media-agency",
+    "content-pipeline",
+    "creator-economy",
+    "channel-growth",
+    "sqlite",
+    "nodejs"
+  ],
+  "author": "Quoc Tuan (quoctuan364)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
