@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChannelCorp OS — Autonomous Multi-Agent Media Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="brand-box">
+        <div class="brand-mark">CC</div>
+        <div>
+          <h1>ChannelCorp OS</h1>
+          <span class="brand-sub">AI Media Agency · 5 Phòng Ban</span>
+        </div>
+      </div>
+
+      <button id="btnOpenBriefModal" class="btn-launch-campaign">
+        <span>+ GIAO VIỆC CHIẾN DỊCH MỚI</span>
+      </button>
+
+      <nav class="main-nav">
+        <button class="nav-item active" data-view="warroom">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span>Phòng Họp & Dây Chuyền AI</span>
+          <span class="nav-badge" id="badgeCampaignCount">0</span>
+        </button>
+
+        <button class="nav-item" data-view="orgchart">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Sơ Đồ 5 Phòng Ban & Nhân Sự</span>
+          <span class="nav-badge badge-indigo" id="badgeAgentCount">9</span>
+        </button>
+
+        <button class="nav-item" data-view="board">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          <span>Bảng Tiến Độ Sản Xuất Kênh</span>
+        </button>
+      </nav>
+
+      <!-- Campaign List in Sidebar -->
+      <div class="sidebar-section">
+        <div class="section-title">
+          <span>DỰ ÁN VIDEO ĐANG TRIỂN KHAI</span>
+        </div>
+        <div id="campaignSidebarList" class="campaign-list"></div>
+      </div>
+
+      <!-- Active AI Agents Roster Status -->
+      <div class="sidebar-footer">
+        <div class="roster-status">
+          <span class="status-dot"></span>
+          <span>9/9 Nhân sự AI sẵn sàng nhận lệnh</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content -->
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="dept-tag" id="topActiveStage">PIPELINE STUDIO</span>
+          <h2 id="topActiveTitle">Chọn hoặc khởi tạo chiến dịch xây kênh</h2>
+        </div>
+        <div class="topbar-right">
+          <div class="metric-pill">
+            <span class="metric-label">VIRAL SCORE:</span>
+            <span class="metric-val" id="topViralScore">--/100</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-label">DỰ BÁO TIẾP CẬN:</span>
+            <span class="metric-val emerald" id="topEstViews">--</span>
+          </div>
+          <button id="btnExportPackage" class="btn-outline">Xuất Hồ Sơ Kịch Bản (.MD)</button>
+        </div>
+      </header>
+
+      <!-- VIEW 1: AI WAR ROOM & PRODUCTION PIPELINE -->
+      <section id="viewWarroom" class="view-section active">
+        <!-- 5-Department Pipeline Stepper -->
+        <div class="pipeline-bar">
+          <div class="pipeline-step done" data-step="1">
+            <span class="step-code">01 · STRAT</span>
+            <span class="step-name">Định Vị & Chiến Lược</span>
+          </div>
+          <div class="pipeline-step done" data-step="2">
+            <span class="step-code">02 · R&D</span>
+            <span class="step-name">Săn Trend & 3s Hook</span>
+          </div>
+          <div class="pipeline-step done" data-step="3">
+            <span class="step-code">03 · SCRIPT</span>
+            <span class="step-name">Biên Kịch Phân Cảnh</span>
+          </div>
+          <div class="pipeline-step done" data-step="4">
+            <span class="step-code">04 · STUDIO</span>
+            <span class="step-name">Đạo Diễn Hình & CapCut</span>
+          </div>
+          <div class="pipeline-step done" data-step="5">
+            <span class="step-code">05 · GROWTH</span>
+            <span class="step-name">SEO & Chuyển Đổi</span>
+          </div>
+        </div>
+
+        <div class="warroom-grid">
+          <!-- Left Column: Deliverables Tabs from 5 Departments -->
+          <div class="deliverables-panel">
+            <div class="artifact-tabs">
+              <button class="artifact-tab active" data-tab="script_content">
+                <span class="tab-code">[SCRIPT]</span> Kịch Bản Quay & Thoại
+              </button>
+              <button class="artifact-tab" data-tab="strategy_brief">
+                <span class="tab-code">[STRAT + R&D]</span> Chiến Lược & 5 Câu Hook
+              </button>
+              <button class="artifact-tab" data-tab="visual_storyboard">
+                <span class="tab-code">[STUDIO]</span> Thumbnail & Dựng CapCut
+              </button>
+              <button class="artifact-tab" data-tab="seo_package">
+                <span class="tab-code">[GROWTH]</span> SEO, Hashtag & Ghim Bình Luận
+              </button>
+            </div>
+
+            <div class="artifact-body-wrap">
+              <div id="artifactRenderedView" class="markdown-View"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live Multi-Agent Discussion & Direct 1-on-1 Consultation -->
+          <div class="comms-panel">
+            <div class="comms-header">
+              <span>BIÊN BẢN HỌP LIÊN PHÒNG BAN (AGENT LOGS)</span>
+            </div>
+            <div id="agentLogsContainer" class="agent-logs"></div>
+
+            <!-- Direct Ask Specific AI Employee -->
+            <div class="consult-box">
+              <div class="consult-row">
+                <label>Hỏi trực tiếp chuyên viên:</label>
+                <select id="selectConsultAgent"></select>
+              </div>
+              <div class="consult-input-row">
+                <input type="text" id="inputConsultQuestion" placeholder="Yêu cầu viết lại câu Hook, rút gọn kịch bản, gợi ý góc quay..." />
+                <button id="btnSendConsult" class="btn-primary">Gửi lệnh</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: COMPANY ORG CHART & 9 AI SPECIALISTS -->
+      <section id="viewOrgchart" class="view-section">
+        <div class="org-container">
+          <div class="org-intro">
+            <h2>Cơ Cấu Tổ Chức Công Ty Truyền Thông AI (5 Phòng Ban · 9 Chuyên Viên)</h2>
+            <p>Mỗi nhân sự AI được huấn luyện với vai trò, kỹ năng chuyên môn và quy chuẩn đầu ra riêng biệt để phối hợp xây kênh cho bạn.</p>
+          </div>
+          <div id="orgDepartmentsGrid" class="org-depts-grid"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: PRODUCTION KANBAN BOARD -->
+      <section id="viewBoard" class="view-section">
+        <div class="org-container">
+          <div class="org-intro">
+            <h2>Bảng Điều Độ Sản Xuất Nội Dung (Production Kanban)</h2>
+            <p>Quản lý trạng thái các video từ khâu Lên kịch bản, Quay & Dựng hậu kỳ, đến Sẵn sàng đăng tải.</p>
+          </div>
+          <div id="kanbanBoardGrid" class="kanban-grid"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal: Giao việc Chiến dịch Mới cho 5 Phòng Ban -->
+  <div id="modalNewBrief" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="dept-tag">NEW CAMPAIGN BRIEF</span>
+          <h3>Giao Đề Bài Cho 5 Phòng Ban AI Sản Xuất</h3>
+        </div>
+        <button id="btnCloseModal" class="btn-close">Đóng [ESC]</button>
+      </div>
+
+      <form id="formCreateCampaign" class="brief-form">
+        <div class="form-group">
+          <label>1. Chủ đề hoặc Ý tưởng Video bạn muốn làm *</label>
+          <input type="text" id="briefTitle" required placeholder="VD: 5 Sai lầm khi thiết kế ánh sáng phòng khách / Cách ứng dụng AI vào quản lý..." />
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>2. Nền tảng & Thời lượng mục tiêu</label>
+            <select id="briefPlatform">
+              <option value="TikTok / Reels / Shorts (60s)">TikTok / Reels / Shorts (Video ngắn 60s)</option>
+              <option value="YouTube Shorts / Reels (90s)">TikTok / Reels Chuyên sâu (90s)</option>
+              <option value="YouTube Dài (8 - 12 phút)">YouTube Dài (Storytelling 8 - 12 phút)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>3. Ngách kênh của bạn (Niche)</label>
+            <input type="text" id="briefNiche" value="Kiến trúc, Xây dựng & Công nghệ" placeholder="VD: Xây dựng trọn gói, Công nghệ AI, Kinh doanh..." />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>4. Tệp khán giả mục tiêu (Target Audience)</label>
+            <input type="text" id="briefAudience" value="Khách hàng 25-45 tuổi quan tâm giải pháp thực tế, chất lượng" />
+          </div>
+
+          <div class="form-group">
+            <label>5. Phong cách & Giọng điệu (Tone of Voice)</label>
+            <input type="text" id="briefTone" value="Chuyên gia thực chiến, súc tích, đi thẳng vào vấn đề" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>6. Điểm nhấn hoặc thông điệp bạn muốn cài vào (Tùy chọn)</label>
+          <textarea id="briefKeyPoints" rows="2" placeholder="VD: Nhấn mạnh vào cam kết không phát sinh chi phí, tặng bảng dự toán miễn phí ở phần bình luận..."></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" id="btnSubmitBrief" class="btn-launch-campaign" style="margin:0; width:auto; padding: 10px 24px;">
+            KÍCH HOẠT 5 PHÒNG BAN SẢN XUẤT NGAY →
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
